@@ -1,0 +1,103 @@
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--9-col mdl-cell--1-offset-desktop">
+        <h2> {{ pageTitle }} </h2>        
+    </div>
+    <div class="mdl-cell mdl-cell--2-col add-task">
+        <button id="show-dialog" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect">
+            <i class="material-icons"> add </i> Add Task
+        </button>
+    </div>
+</div>
+
+<div class="mdl-grid">
+
+    <div class="mdl-cell mdl-cell--10-col mdl-cell--1-offset-desktop mdl-cell--8-col-tablet">
+        <div class="mdl-grid">           
+            <div class="mdl-card demo-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-shadow--6dp md-card" *ngFor="let task of tasks">
+                <div class="mdl-card__title">
+                     <i *ngIf="task.isDone" class="material-icons md-done"> done </i>  <h2 class="mdl-card__title-text"> {{ task.title }} </h2>
+                </div> 
+                <div class="mdl-card__supporting-text">
+                    <p> {{ task.description }} </p>             
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                    <button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect"
+                        (click)="edit(task)">
+                        Edit
+                    </button>
+                </div>                
+                <div class="mdl-card__menu">                   
+                    <i class="icon material-icons md-dark md-30" (click)="deleteTask(task._id)"> delete_forever </i>               
+                </div>               
+            </div>          
+        </div>     
+    </div>
+
+</div>
+
+ <dialog class="mdl-dialog">
+    <div class="mdl-dialog__content">
+        <div class="mdl-card mdl-cell--12-col mdl-shadow--6dp">
+            <div class="mdl-card__title mdl-color-text--white mdl-color--blue-grey-700">
+                <i class="material-icons md-add"> mode_edit </i> <h2 class="mdl-card__title-text"> Create New Task </h2>
+            </div>
+            <div class="mdl-card__supporting-text mdl-cell--12-col">
+                <form [formGroup]="productForm" novalidate>                     
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
+                        <input class="mdl-textfield__input" type="text" id="title" formControlName="title">
+                        <label class="mdl-textfield__label" for="title"> Title </label>
+                    </div>                     
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
+                        <input class="mdl-textfield__input" type="text" id="description" formControlName="description">
+                        <label class="mdl-textfield__label" for="description"> Description </label>
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-cell--4-col">
+                        <label for="checkbox" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                            <input type="checkbox" id="checkbox" class="mdl-checkbox__input" formControlName="isDone">
+                            <span class="mdl-checkbox__label"> Is Done </span>
+                        </label>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="mdl-dialog__actions">                
+        <button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button save"
+            (click)="addTask()"
+            [disabled]='!productForm.valid'>
+            Save
+        </button>
+        <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button close"
+            (click)="cancel()">
+            Cancel
+        </button>                
+    </div>
+</dialog>
+
+        <!--<table class="mdl-data-table mdl-js-data-table mdl-cell--8-col mdl-cell--2-offset-desktop mdl-shadow--4dp">
+            <thead>
+                <tr>
+                    <th class="mdl-data-table__cell--non-numeric"> Title </th>
+                    <th class="mdl-data-table__cell--non-numeric"> Is Done </th>
+                    <th class="mdl-data-table__cell--non-numeric"> Delete </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let task of tasks">
+                    <td class="mdl-data-table__cell--non-numeric"> {{ task.title }} </td>
+                    <td class="mdl-data-table__cell--non-numeric"> {{ task.isDone }} </td>
+                    <td class="mdl-data-table__cell--non-numeric"><a (click)="deleteTask(task._id)"><i class="material-icons md-dark md-24">delete_forever</i></a></td> 
+                </tr>
+            </tbody>
+        </table>-->  
+
+    <!--<div class="mdl-cell mdl-cell--3-col mdl-cell--6-col-tablet mdl-cell--1-offset-tablet mdl-cell--4-col-phone">
+
+        
+
+       
+        
+    </div>
+    
+</div>-->
+

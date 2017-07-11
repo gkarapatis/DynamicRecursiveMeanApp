@@ -1,0 +1,26 @@
+<div class="mdl-grid">
+
+    <div class="mdl-cell mdl-cell--10-col mdl-cell--1-offset-desktop mdl-cell--8-col-tablet">
+        <div class="mdl-grid">           
+            <div class="mdl-card demo-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-shadow--6dp md-card" *ngFor="let record of records">
+                <div class="mdl-card__title">
+                     <i class="material-icons md-done"> done </i>  <h2 class="mdl-card__title-text"> {{ record._id }} </h2>
+                </div> 
+                <div class="mdl-card__supporting-text">
+                    <p> {{ record._id  }} </p>             
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+
+                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                       [routerLink]="['form', record._id ]">
+                       + Show Form
+                    </a>
+                </div>              
+                <div class="mdl-card__menu">                   
+                    <i class="icon material-icons md-dark md-30" (click)="deleteform(record._id )"> delete_forever </i>               
+                </div>
+            </div>
+        </div>     
+    </div>
+</div>
+

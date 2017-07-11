@@ -1,0 +1,10 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+    "files.exclude":{
+        "**/app/**/*.js": true,
+        "**/*.map": true
+    },
+
+    "editor.fontSize": 15,
+    "vsicons.presets.angular": true
+}

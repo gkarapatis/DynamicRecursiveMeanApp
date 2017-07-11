@@ -1,0 +1,49 @@
+/*div{
+    border: 1px solid black;
+}*/
+
+
+.mdl-data-table thead th{
+    color: #009688;
+}
+
+.mdl-data-table td{
+    border-top: 1px solid #455a64;
+}
+
+.material-icons.md-30 { 
+    font-size: 30px;
+}
+.material-icons.md-add {
+    font-size: 34px;
+    font-weight: bold;
+    color: #cddc39;  
+
+}
+
+.material-icons.md-dark {
+    color: #e60707;
+}
+
+.material-icons.md-dark:hover{
+    cursor: pointer;
+    font-size: 34px;
+    color:#ad0707;    
+}
+
+.md-done {
+    color: #cddc39;
+    font-size: 38px;
+}
+
+.mdl-dialog{
+    width: 500px;
+}
+
+.add-task{
+    display: flex;
+    /* justify-content: center;     Align Horizontal */
+    align-items: center;        /* Align Vertical */  
+}
+
+

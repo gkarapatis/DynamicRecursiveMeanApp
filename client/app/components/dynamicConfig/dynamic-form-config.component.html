@@ -1,0 +1,38 @@
+<div class="mdl-grid">
+
+    <div class="mdl-cell mdl-cell--10-col mdl-cell--1-offset-desktop mdl-cell--8-col-tablet">
+        <div class="mdl-grid">           
+            <div class="mdl-card demo-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-shadow--6dp md-card" *ngFor="let form of forms">
+                <div class="mdl-card__title">
+                     <i class="material-icons md-done"> done </i>  <h2 class="mdl-card__title-text"> {{ form.formID }} </h2>
+                </div>             
+                <div class="mdl-card__menu">                   
+                    <i class="icon material-icons md-dark md-30" (click)="addForm(form.formID)"> delete_forever </i>               
+                </div>
+            </div>
+        </div>     
+    </div>
+
+
+<div>
+    <div class="form-row">
+        <label style="padding: 7px;margin: 7px" >FormID</label>
+        <input  [(ngModel)]="formID" [type]="textbox" style="padding: 7px;margin: 7px"/>
+    </div>
+    <div class="form-row">
+      <button (click)="addTextbox()" style="padding: 7px;margin: 7px">Add TextBox</button>
+      <button (click)="addTable()" style="padding: 7px;margin: 7px">Add Table</button>
+      <button (click)="addDropDown()" style="padding: 7px;margin: 7px">Add DropDown</button>
+    </div>
+    <div *ngFor="let element of elements" class="form-row" style="padding: 7px;margin: 7px">
+      <div [ngSwitch]="element.controlType">
+      <text-box-config *ngSwitchCase="'textbox'" [element]="element"></text-box-config>      
+      <drop-down-config *ngSwitchCase="'dropdown'" [element]="element"></drop-down-config>
+      <grid-config *ngSwitchCase="'grid'" [element]="element"></grid-config>
+    </div>   
+    </div>   
+    <div class="form-row">
+      <button (click)="submitForm()" style="padding: 7px;margin: 7px">Submit Form</button>
+    </div> 
+</div>
+</div>

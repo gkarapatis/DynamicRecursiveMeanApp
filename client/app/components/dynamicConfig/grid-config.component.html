@@ -1,0 +1,15 @@
+
+    <div class="form-row">
+      <label>Grid</label>
+    </div>
+   <!--<div class="form-row">
+      <label>KeyName</label>
+      <input  [type]="textbox" [(ngModel)]="element.key" style="padding: 7px;margin: 7px">
+    </div>-->
+    <div class="form-row">
+      <label>Description</label>
+      <input  [type]="textbox" [(ngModel)]="element.label" style="padding: 7px;margin: 7px">
+    </div>
+    <div class="form-row">
+      <dynamic-form-config  [elements]="element.elements" [formID]="element.key"></dynamic-form-config>
+    </div>

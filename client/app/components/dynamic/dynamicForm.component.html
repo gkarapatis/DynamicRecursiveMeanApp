@@ -1,0 +1,16 @@
+<div>
+    <form (ngSubmit)="onSubmit()" >
+        <!--<df-element ></df-element>-->
+        <div *ngIf="ok">
+          <df-element *ngIf="showElement"  [elements]="elements" [data]="data"></df-element>
+        </div>            
+        <div class="form-row">
+            <!--<button type="submit" [disabled]="!form.valid">Save</button>-->
+            <button type="submit" style="padding: 7px;margin: 7px">Save</button>
+        </div>
+    </form>
+    <div *ngIf="payLoad" class="form-row">
+        <strong>Saved the following values</strong><br>{{payLoad}}
+    </div>
+    {{payLoad1}}
+</div>

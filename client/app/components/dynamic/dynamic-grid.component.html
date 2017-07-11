@@ -1,0 +1,17 @@
+<div>
+    <table border="1" style="width:50%;margin: 7px">
+        <tr><!--options.elements.find(x => x.key == column).label-->         
+            <th *ngFor="let element of getColumnElements()">{{element.label}}</th>
+        </tr>
+        <tr *ngFor="let row of data">
+            <td *ngFor="let element of getColumnElements()">
+                        {{getValueDes(element,row)}}
+            </td>
+        </tr>
+        <tr >
+            <df-element *ngIf="editMode" [elements]="elements" [data]="addedItem"></df-element>
+             <button type="button" (click)="addItem($event)" *ngIf="editMode" style="padding: 7px;margin: 7px">save</button>
+        </tr>        
+    </table>
+    <button type="button" *ngIf="!editMode" (click)="clicked($event)" style="padding: 7px;margin: 7px">add</button>
+</div>

@@ -1,0 +1,53 @@
+<div mdl class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header mdl-color--blue-grey-700 mdl-color-text--lime-500">
+        <div class="mdl-layout__header-row">
+            <span class="mdl-layout-title"> {{ pageTitle }} </span>
+            <div class="mdl-layout-spacer"></div>
+            <nav class="mdl-navigation mdl-layout--large-screen-only">
+                <a href="#" class="mdl-navigation__link"> Link 1 </a>
+                <a href="#" class="mdl-navigation__link"> Link 2 </a>
+                <a href="#" class="mdl-navigation__link"> Link 3 </a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="mdl-layout__drawer">
+      <span class="mdl-layout-title"> Material Design Lite </span>
+      <nav class="mdl-navigation">
+        <a href="#" class="mdl-navigation__link" routerLink="an/formConfig"> New Form </a>
+        <a href="#" class="mdl-navigation__link" routerLink="an/forms"> Forms </a>
+        <a href="#" class="mdl-navigation__link" routerLink="home"> Link 3 </a>
+
+        <button (click)="login('Admin')" style="padding: 7px;margin: 7px">Login As Admin</button>
+        <button (click)="login('Employee')" style="padding: 7px;margin: 7px">Login As Employee</button>
+        <button (click)="logout()" style="padding: 7px;margin: 7px">Log out</button>
+      </nav>
+    </div>
+
+    <main class="mdl-layout__content">
+        <div class="page-content">
+            <router-outlet></router-outlet>
+           <!--<tasks> </tasks>
+           <dynamic-form-config [elements]="elements"></dynamic-form-config>
+
+      <button (click)="showForm1()" style="padding: 7px;margin: 7px">Show Form</button>
+
+
+            <dynamic-form *ngIf="showForm" [elements]="elements" > </dynamic-form>
+
+            <dynamic-form  [elements]="elements" [formId]="BasicData"> </dynamic-form>            -->
+                        
+        </div>
+    </main>
+<!--
+    <footer class="mdl-mini-footer">
+      <div class="mdl-mini-footer--right-section">
+        <div class="mdl-logo"> Material Design Lite </div>
+        <ul class="mdl-mini-footer--link-list">
+          <li><a href="#"> Help </a></li>
+          <li><a href="#"> About </a></li>
+        </ul>
+      </div>
+    </footer>
+    -->
+</div>
