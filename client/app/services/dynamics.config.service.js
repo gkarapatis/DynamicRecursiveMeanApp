@@ -15,12 +15,9 @@ require('rxjs/add/operator/map');
 var DynamicsConfigFormService = (function () {
     function DynamicsConfigFormService(_http) {
         this._http = _http;
-        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
-    //token = this.currentUser.token.token;
-    //this.http.
     DynamicsConfigFormService.prototype.getDynamicConfigForms = function () {
-        return this._http.get('api/dynamicForms', { headers: this.currentUser })
+        return this._http.get('api/dynamicForms')
             .map(function (res) { return res.json(); });
     };
     DynamicsConfigFormService.prototype.getDynamicConfigForm = function (formID) {

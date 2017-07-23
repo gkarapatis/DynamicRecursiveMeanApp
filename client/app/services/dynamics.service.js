@@ -15,32 +15,29 @@ require('rxjs/add/operator/map');
 var DynamicsService = (function () {
     function DynamicsService(_http) {
         this._http = _http;
-        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        this.token = this.currentUser.token;
-        this.headers = new http_1.Headers({ 'x-access-token': this.token }); //{ headers: {'x-access-token': this.token} };//new Headers({ 'x-access-token':this.token });
-        this.options = new http_1.RequestOptions({ headers: this.headers });
     }
     DynamicsService.prototype.getDynamics = function (tableName) {
-        return this._http.get('api/dynamics/' + tableName, this.options)
+        return this._http.get('api/dynamics/' + tableName)
             .map(function (res) { return res.json(); });
     };
     DynamicsService.prototype.getDynamic = function (tableName, objectID) {
-        return this._http.get('api/dynamic/' + tableName + '/' + objectID, this.options)
+        return this._http.get('api/dynamic/' + tableName + '/' + objectID)
             .map(function (res) { return res.json(); });
     };
     DynamicsService.prototype.addDynamic = function (newDynamic, tableName) {
-        var headers = new http_1.Headers({ 'x-access-token': this.token }); //{ headers: {'x-access-token': this.token} };//new Headers({ 'x-access-token':this.token });
-        //let headers = { headers: {'x-access-token': this.token} };//new Headers({ 'x-access-token':this.token });
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         var options = new http_1.RequestOptions({ headers: headers });
-        return this._http.post('api/dynamics/' + tableName, JSON.stringify(newDynamic), this.options)
+        return this._http.post('api/dynamics/' + tableName, JSON.stringify(newDynamic), options)
             .map(function (res) { return res.json(); });
     };
     DynamicsService.prototype.deleteDynamic = function (dynamicId) {
-        return this._http.delete('api/dynamic/' + dynamicId, this.options)
+        return this._http.delete('api/dynamic/' + dynamicId)
             .map(function (res) { return res.json(); });
     };
     DynamicsService.prototype.updateDynamic = function (dynamic, formID) {
-        return this._http.put('api/dynamic/' + formID + '/' + dynamic._id, JSON.stringify(dynamic), this.options)
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this._http.put('api/dynamic/' + formID + '/' + dynamic._id, JSON.stringify(dynamic), options)
             .map(function (res) { return res.json(); });
     };
     DynamicsService = __decorate([

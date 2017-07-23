@@ -10,11 +10,9 @@ export class DynamicsConfigFormService{
     constructor(private _http: Http){
 
     }
-    currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    //token = this.currentUser.token.token;
-    //this.http.
+
     getDynamicConfigForms() {
-        return this._http.get('api/dynamicForms',{headers:this.currentUser})
+        return this._http.get('api/dynamicForms')
                         .map(res => res.json());
     }
 

@@ -18,6 +18,7 @@ var DynamicGridComponent = (function () {
         this.data = [];
         this.addedItem = {};
         this.editMode = false;
+        this.editIndex = -1;
     }
     //constructor(private qcs: ElementControlService, service: ElementService)
     //{
@@ -29,6 +30,19 @@ var DynamicGridComponent = (function () {
     DynamicGridComponent.prototype.ngOnInit = function () {
         //this.grid = this.qcs.togridGroup(this.elements);
     };
+    DynamicGridComponent.prototype.ngAfterViewInit = function () {
+        var dialog = document.querySelector('dialog');
+        //var showDialogButton = document.querySelector('#show-dialog');
+        // if (!dialog.showModal) {
+        //  dialogPolyfill.registerDialog(dialog);
+        // }
+        this.showDialog = function () {
+            dialog.showModal();
+        };
+        this.closeDialog = function () {
+            dialog.close();
+        };
+    };
     DynamicGridComponent.prototype.getValueDes = function (element, row) {
         //return element.controlType=='dropdown'?element.options.find(option => option.key == row[element.key]).value:row[element.key];
         return row[element.key];
@@ -36,20 +50,41 @@ var DynamicGridComponent = (function () {
     //onSubmit() {
     //    this.payLoad = JSON.stringify(this.grid.value);
     //}
-    DynamicGridComponent.prototype.clicked = function (event) {
+    DynamicGridComponent.prototype.addNew = function (event) {
+        this.showDialog();
+        this.editIndex = -1;
+        this.addedItem = {};
         this.editMode = !this.editMode;
     };
     DynamicGridComponent.prototype.addItem = function (event) {
+        this.closeDialog();
         var newItem = JSON.parse(JSON.stringify(this.addedItem));
         this.addedItem = {};
         //for (let prop in this.addedItem){
         //    newItem[prop]=this.addedItem[prop];
         //}
-        this.data.push(newItem);
+        if (this.editIndex == -1) {
+            this.data.push(newItem);
+        }
+        else
+            this.data[this.editIndex] = newItem;
         //        this.data.push(this.addedItem);
-        //alert("");
         //this.data.shift();
         this.editMode = !this.editMode;
+    };
+    DynamicGridComponent.prototype.cancel = function (event) {
+        this.closeDialog();
+        this.editMode = false;
+    };
+    DynamicGridComponent.prototype.edit = function (index) {
+        this.showDialog();
+        this.editIndex = index;
+        //this.editMode = true;            
+        this.addedItem = JSON.parse(JSON.stringify(this.data[index]));
+    };
+    DynamicGridComponent.prototype.delete = function (index) {
+        //this.editMode = false;                  
+        this.data.splice(index, 1);
     };
     __decorate([
         core_1.Input(), 

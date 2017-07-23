@@ -20,6 +20,7 @@ var dynamic_form_config_module_1 = require('./components/dynamicConfig/dynamic-f
 var dynamicForm_component_1 = require('./components/dynamic/dynamicForm.component');
 var dynamic_form_config_component_1 = require('./components/dynamicConfig/dynamic-form-config.component');
 var forms_display_component_1 = require('./components/dynamic/forms-display.component');
+var tasks_component_1 = require('./components/tasks/tasks.component');
 var authenticate_service_1 = require('./services/authenticate.service');
 var AppModule = (function () {
     function AppModule() {
@@ -44,6 +45,10 @@ var AppModule = (function () {
                     {
                         path: 'an/forms',
                         component: forms_display_component_1.FormsDisplayComponent
+                    },
+                    {
+                        path: 'an/tasks',
+                        component: tasks_component_1.TasksComponent
                     },
                     //{ 
                     //  path: 'an/',

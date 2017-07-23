@@ -1,17 +1,70 @@
-<div>
-    <table border="1" style="width:50%;margin: 7px">
+<div >
+    <table   class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
         <tr><!--options.elements.find(x => x.key == column).label-->         
             <th *ngFor="let element of getColumnElements()">{{element.label}}</th>
         </tr>
-        <tr *ngFor="let row of data">
+        <tr *ngFor="let row of data; let i = index"  >
             <td *ngFor="let element of getColumnElements()">
                         {{getValueDes(element,row)}}
             </td>
-        </tr>
-        <tr >
-            <df-element *ngIf="editMode" [elements]="elements" [data]="addedItem"></df-element>
-             <button type="button" (click)="addItem($event)" *ngIf="editMode" style="padding: 7px;margin: 7px">save</button>
-        </tr>        
+            <td>
+                <button type="button" (click)="delete(i)"  class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button">delete</button>        
+            </td>
+            <td>
+                <button type="button"  (click)="edit(i)"  class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button">edit</button>        
+            </td>
+        </tr>       
     </table>
-    <button type="button" *ngIf="!editMode" (click)="clicked($event)" style="padding: 7px;margin: 7px">add</button>
+
+
+<!--
+ <dialog class="mdl-dialog" >
+    <div class="mdl-dialog__content">
+        <df-element  [elements]="elements" [data]="addedItem"></df-element>               
+
+    </div>
+    <div class="mdl-dialog__actions">                
+        <button type="button" (click)="addItem($event)"  class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button save">save</button>        
+        <button type="button" (click)="cancel($event)"  class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button close">cancel</button>               
+    </div>
+</dialog>
+
+-->
+
+<!--
+    <div *ngIf="editMode">
+    <df-element  [elements]="elements" [data]="addedItem"></df-element>
+    <button type="button" (click)="addItem($event)"  class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button">save</button>        
+    <button type="button" (click)="cancel($event)"  class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button">cancel</button>        
+    </div>
+-->
+    <button  type="button" *ngIf="!editMode" (click)="addNew($event)" class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button">
+        <i class="material-icons"> add </i> Add
+    </button>
+<!--
+
+    <div class="mdl-cell mdl-cell--2-col add-task">
+        <button id="show-dialog" (click)="addNew($event)" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect">
+            <i class="material-icons"> add </i> Add Task
+        </button>
+    </div>-->
 </div>
+
+
+
+<dialog class="mdl-dialog">
+        
+                <df-element  [elements]="elements" [data]="addedItem"></df-element>
+    <div class="mdl-dialog__actions">                
+        <button type="button" class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button"
+            (click)="addItem($event)">
+            Save
+        </button>
+        <button type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button"
+            (click)="cancel($event)">
+            Cancel
+        </button>                
+    </div>
+</dialog>
+
+

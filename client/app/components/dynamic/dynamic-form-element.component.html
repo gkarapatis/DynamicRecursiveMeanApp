@@ -1,24 +1,27 @@
 ﻿
-<div *ngFor="let element of elements" class="form-row" style="padding: 7px;margin: 7px" >
-    <div >
-        <label [attr.for]="element.key">{{element.label}}</label>
-        <div [ngSwitch]="element.controlType">
-            <!--<div *ngSwitchCase="'layout'" style="padding-left:30px">
-                <df-element [elements]="element.elements" [form]="form.get(element.key)"></df-element>
-            </div>-->
-            <!--todo: add data of grid this.data.push(this.addedItem);-->
-            <dynamic-grid *ngSwitchCase="'grid'" [key]="element.key" [elements]="element.elements" [data]="data[element.key]"  ></dynamic-grid>
-            <!--<dynamic-grid *ngSwitchCase="'grid'" [gridOptions]="element.gridOptions" [form]="form.get(element.key)"></dynamic-grid>-->
-            <input *ngSwitchCase="'textbox'" [(ngModel)]="data[element.key]" 
-                   [id]="element.key" [type]="element.type">
-            <select [id]="element.key" *ngSwitchCase="'dropdown'" [(ngModel)]="data[element.key]">
-                <option *ngFor="let opt of element.options" [value]="opt.key">{{opt.value}}</option>
-            </select>
-            <df-element *ngSwitchCase="'form'" [key]="element.key"  [formID]="element.formID" [data]="data[element.key]" ></df-element>
+<div class="mdl-dialog__content">
+    <div class="mdl-card mdl-cell--12-col mdl-shadow--6dp">
+        <div *ngFor="let element of elements" class="form-row" style="padding: 7px;margin: 7px" >
+            <div >
+                <label [attr.for]="element.key">{{element.label}}</label>
+                <div [ngSwitch]="element.controlType">
+                    <!--<div *ngSwitchCase="'layout'" style="padding-left:30px">
+                        <df-element [elements]="element.elements" [form]="form.get(element.key)"></df-element>
+                    </div>-->
+                    <!--todo: add data of grid this.data.push(this.addedItem);-->
+                    <dynamic-grid *ngSwitchCase="'grid'" [key]="element.key" [elements]="element.elements" [data]="data[element.key]"  ></dynamic-grid>
+                    <!--<dynamic-grid *ngSwitchCase="'grid'" [gridOptions]="element.gridOptions" [form]="form.get(element.key)"></dynamic-grid>-->
+                    <input class="mdl-textfield__input mdl-cell--6-col" *ngSwitchCase="'textbox'" [(ngModel)]="data[element.key]" 
+                        [id]="element.key" [type]="element.type">
+                    <select class="mdl-textfield__input mdl-cell--3-col" [id]="element.key" *ngSwitchCase="'dropdown'" [(ngModel)]="data[element.key]">
+                        <option *ngFor="let opt of element.options" [value]="opt.key">{{opt.value}}</option>
+                    </select>
+                    <df-element *ngSwitchCase="'form'" [key]="element.key"  [formID]="element.formID" [data]="data[element.key]" ></df-element>
+                </div>
+                <div class="errorMessage" *ngIf="!isValid(element.key)">{{element.label}} is required</div>
+            </div>
         </div>
-        <div class="errorMessage" *ngIf="!isValid(element.key)">{{element.label}} is required</div>
     </div>
 </div>
-
 <!--<dynamic-grid #agGrid style="width: 100%; height: 200px;" class="ag-fresh"
                  [gridOptions]="element.gridOptions"/></ag-grid-angular>-->

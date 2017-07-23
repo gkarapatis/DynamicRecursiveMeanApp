@@ -13,6 +13,7 @@ import { DynamicFormConfigModule } from  './components/dynamicConfig/dynamic-for
 import { DynamicFormComponent }   from  './components/dynamic/dynamicForm.component';
 import { DynamicFormConfigComponent }   from  './components/dynamicConfig/dynamic-form-config.component';
 import { FormsDisplayComponent }   from  './components/dynamic/forms-display.component';
+import { TasksComponent }   from  './components/tasks/tasks.component';
 
 
 import { AuthenticateService }  from  './services/authenticate.service';
@@ -40,6 +41,10 @@ import { AuthenticateService }  from  './services/authenticate.service';
         path: 'an/forms',
         component: FormsDisplayComponent
       },
+      { 
+        path: 'an/tasks',
+        component: TasksComponent
+      }
       //{ 
       //  path: 'an/',
       //  redirectTo: 'an/formConfig',

@@ -4,8 +4,6 @@ var mongojs = require('mongojs');
 var db = mongojs('mongodb://localhost:27017/DynamicsDB', ['dynamicForms']);
 
 
-//  Get Single Task
-
 router.get('/dynamicForm/:id', function(req, res, next) {
     db.dynamicForms.findOne({formID: req.params.id}, function(err, task){
         if(err){
@@ -15,7 +13,6 @@ router.get('/dynamicForm/:id', function(req, res, next) {
     });
 });
 
-//  Get All Tasks
 
 router.get('/dynamicForms', function(req, res, next) {
     db.dynamicForms.find(function(err, dynamics){
@@ -24,25 +21,11 @@ router.get('/dynamicForms', function(req, res, next) {
         }
         res.json(dynamics);
     });
-    //res.send('Task API');
 });
 
 
-
-
-
-//  Save Task
-
 router.post('/dynamicForm', function(req, res, next){
     var dynamic = req.body;
-
-
-   //db.dynamics.save(dynamic, function(err, dynamic){
-   //    if(err){
-   //        res.send(err);
-   //    }
-   //    res.json(dynamic);
-   //});
 
    if(dynamic.formID==null||dynamic.formID==""){ //  if(!task.title || !(task.isDone + ''))
        res.status(400);
@@ -59,9 +42,6 @@ router.post('/dynamicForm', function(req, res, next){
    }
 });
 
-
-// Delete Task
-
 router.delete('/dynamicForm/:id', function(req, res, next) {
     db.dynamicForms.remove({_id: mongojs.ObjectId(req.params.id)}, function(err, task){
         if(err){
@@ -70,9 +50,6 @@ router.delete('/dynamicForm/:id', function(req, res, next) {
         res.json(task);
     });
 });
-
-
-// Update Task
 
 router.put('/dynamicForm/:id', function(req, res, next) {
     var task = req.body;

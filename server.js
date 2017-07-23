@@ -4,10 +4,9 @@ var bodyParser = require('body-parser');
 var jwt    = require('jsonwebtoken');
 
 var index = require('./routes/index');
-var tasks = require('./routes/tasks');
 var dynamics = require('./routes/dynamics');
 var dynamicForms = require('./routes/dynamicConfigForm');
-var authenticate = require('./routes/authenticate');
+var tasks = require('./routes/tasks');
 
 var port = 3000;
 
@@ -27,7 +26,6 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use('/', index);
-app.use('/api', authenticate);
 app.use('/api', dynamicForms);
 app.use('/api', dynamics);
 app.use('/api', tasks);
