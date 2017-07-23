@@ -44,7 +44,7 @@ import { AuthenticateService }  from  './services/authenticate.service';
       { 
         path: 'an/tasks',
         component: TasksComponent
-      }
+      },
       //{ 
       //  path: 'an/',
       //  redirectTo: 'an/formConfig',

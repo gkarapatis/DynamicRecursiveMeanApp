@@ -19,11 +19,13 @@ export class DynamicGridComponent implements OnInit {
     @Input() data:any[]=[];
     @Input() key:string;
     addedItem: any={};
-    editMode:boolean=false;
+   // editMode:boolean=false;
 
     editIndex: number=-1;
-    showDialog: any;
-    closeDialog: any;
+    dialog:any={};
+
+    //showDialog: any;
+    //closeDialog: any;
 
     constructor() {
     }
@@ -43,17 +45,17 @@ export class DynamicGridComponent implements OnInit {
     }
 
   ngAfterViewInit() {
-    var dialog:any = document.querySelector('dialog');
+    this.dialog = document.querySelector('dialog');
     //var showDialogButton = document.querySelector('#show-dialog');
     // if (!dialog.showModal) {
     //  dialogPolyfill.registerDialog(dialog);
     // }
-    this.showDialog = function() {
-      dialog.showModal();
-    }
-    this.closeDialog = function() {
-      dialog.close();
-    }
+    //this.showDialog = function() {
+    //  dialog.showModal();
+    //}
+    //this.closeDialog = function() {
+    //  dialog.close();
+    //}
     }
 
     getValueDes(element:any,row:any):string
@@ -66,13 +68,13 @@ export class DynamicGridComponent implements OnInit {
     //}
 
     addNew(event:any) {
-        this.showDialog();
+        this.dialog.showModal();
         this.editIndex = -1;
         this.addedItem={};
-        this.editMode = !this.editMode;
+        //this.editMode = !this.editMode;
     }
     addItem(event:any) {
-       this.closeDialog();
+       this.dialog.close();
         let newItem=JSON.parse(JSON.stringify(this.addedItem));
         this.addedItem={};
         //for (let prop in this.addedItem){
@@ -87,14 +89,14 @@ export class DynamicGridComponent implements OnInit {
         
 //        this.data.push(this.addedItem);
         //this.data.shift();
-        this.editMode = !this.editMode;
+      //  this.editMode = !this.editMode;
     }
    cancel(event:any) {
-       this.closeDialog();
-        this.editMode = false;
+       this.dialog.close();
+     //   this.editMode = false;
     }    
     edit(index: any){
-        this.showDialog();
+        this.dialog.showModal();
         this.editIndex = index;
         //this.editMode = true;            
         
