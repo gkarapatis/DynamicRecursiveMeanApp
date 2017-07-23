@@ -28,5 +28,7 @@ Make sure you have Node version >= 6.0 and NPM >= 3
 -npm install (to the client folder for the client application)
 
 Run the node server and the client app
+
 -npm start server (to the root folder for the node server)
+
 -npm start (to the client folder for the client application)
